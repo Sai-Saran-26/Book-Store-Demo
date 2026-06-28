@@ -1,13 +1,16 @@
 import { test, expect } from '@playwright/test';
 import { apiData } from '../test-data/api-testdata';
 
+require('dotenv').config();
+const API_KEY = process.env.REQRES_API_KEY;
+
+
 test('ReqRes API Automation', async ({ request }) => {
 
     // Create User
     const createResponse = await request.post('https://reqres.in/api/users', {
         headers: {
-            'x-api-key': 'pro_815e5e029ce369aa03f69c8e1b75bf3b4da44a3c9b650347ceffb91b2047817d',
-            'Content-Type': 'application/json'
+            'x-api-key': API_KEY,
         },
         data: apiData.createUser
     });
@@ -30,7 +33,7 @@ test('ReqRes API Automation', async ({ request }) => {
     const getCreatedUser = await request.get(`https://reqres.in/api/users/${userId}`,
         {
             headers: {
-                'x-api-key': 'pro_815e5e029ce369aa03f69c8e1b75bf3b4da44a3c9b650347ceffb91b2047817d'
+                'x-api-key': API_KEY
             }
         }
     );
@@ -41,7 +44,7 @@ test('ReqRes API Automation', async ({ request }) => {
 
     const getResponse = await request.get('https://reqres.in/api/users/2', {
         headers: {
-            'x-api-key': 'pro_815e5e029ce369aa03f69c8e1b75bf3b4da44a3c9b650347ceffb91b2047817d'
+            'x-api-key': API_KEY
         }
     });
 
@@ -56,7 +59,7 @@ test('ReqRes API Automation', async ({ request }) => {
 
     const updateResponse = await request.put(`https://reqres.in/api/users/${userId}`, {
         headers: {
-            'x-api-key': 'pro_815e5e029ce369aa03f69c8e1b75bf3b4da44a3c9b650347ceffb91b2047817d'
+            'x-api-key': API_KEY
         },
         data: apiData.updatedUser
     });

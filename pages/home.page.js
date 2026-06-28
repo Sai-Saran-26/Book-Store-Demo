@@ -8,15 +8,15 @@ export class HomePage {
 
         // Locators
         this.homeScreen = page.locator('.body-height');
-        this.bookStoreCard = page.getByText('Book Store Application')
-        this.loginButton = page.getByRole('button').filter({ hasText: "Login" })
-        this.userName = page.getByPlaceholder('UserName')
-        this.password = page.getByPlaceholder('Password')
-        this.validateUserName = page.locator('.form-label').nth(2)
-        this.logOut = page.getByRole('button').filter({ hasText: "Logout" })
-        this.bookStorelogout = page.getByRole('button').filter({ hasText: "Log out" })
-        this.bookStoreButton = page.getByRole('button').filter({ hasText: "Go To Book Store" })
-        this.search = page.getByPlaceholder('Type to search')
+        this.bookStoreCard = page.getByText('Book Store Application');
+        this.loginButton = page.getByRole('button').filter({ hasText: "Login" });
+        this.userName = page.getByPlaceholder('UserName');
+        this.password = page.getByPlaceholder('Password');
+        this.validateUserName = page.locator('.form-label').nth(2);
+        this.logOut = page.getByRole('button').filter({ hasText: "Logout" });
+        this.bookStorelogout = page.getByRole('button').filter({ hasText: "Log out" });
+        this.bookStoreButton = page.getByRole('button').filter({ hasText: "Go To Book Store" });
+        this.search = page.getByPlaceholder('Type to search');
         this.bookTitle = page.locator('tbody tr td:nth-child(2) a');    
         this.bookAuthor = page.locator('tbody tr td:nth-child(3)');
         this.bookPublisher = page.locator('tbody tr td:nth-child(4)');
@@ -38,13 +38,13 @@ export class HomePage {
     }
 
     async clickBookstore() {
-        await this.bookStoreButton.click()
+        await this.bookStoreButton.click();
     }
 
     async searchBook(){
         await this.search.waitFor({ state: 'visible' });
         await this.search.click();
-        await this.search.fill(Books.bookName)
+        await this.search.fill(Books.bookName);
         await this.page.getByRole('link', { name: Books.bookName }).waitFor({ state: 'visible' });
     }
 
@@ -57,7 +57,7 @@ export class HomePage {
     }
 
     async clickLogout() {
-        await this.bookStorelogout.click()
+        await this.bookStorelogout.click();
     }
 
 }
