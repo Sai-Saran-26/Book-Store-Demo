@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test';
-import { Books } from '../test-data/ui-testdata';
+import { Books, user } from '../test-data/ui-testdata';
 
 export class HomePage {
 
@@ -12,7 +12,7 @@ export class HomePage {
         this.loginButton = page.getByRole('button').filter({ hasText: "Login" });
         this.userName = page.getByPlaceholder('UserName');
         this.password = page.getByPlaceholder('Password');
-        this.validateUserName = page.locator('.form-label').nth(2);
+        this.validateUserName = page.locator('#userName-value')
         this.logOut = page.getByRole('button').filter({ hasText: "Logout" });
         this.bookStorelogout = page.getByRole('button').filter({ hasText: "Log out" });
         this.bookStoreButton = page.getByRole('button').filter({ hasText: "Go To Book Store" });
